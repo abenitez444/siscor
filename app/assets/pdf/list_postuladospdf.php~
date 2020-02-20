@@ -1,0 +1,94 @@
+<?php session_start();
+header('Content-Type: text/html; charset=utf-8');
+//include('');?>
+<?php
+	  $cod_curso=$_SESSION['cod_curso'];
+      require_once('class.ezpdf.php');
+      $pdf =& new Cezpdf('a4');          // para el tipo de hoja  en este caso Carta
+      $pdf->selectFont('../fonts/Times-Bold.afm');   // para el tipo de fuente a utilizar
+      $pdf->ezSetCmMargins(1,1,1.5,1.5);  // para los margenes de la hoja
+      $pdf->ezImage("../img/membrete_pdf.jpg", 0, 550, 'none', 'left');
+      $conexion = mysql_connect("localhost", "root", "123456");
+      mysql_select_db("cursosEmpleados", $conexion);
+      $queCurso = "SELECT * FROM cursos where codigo_curso='$cod_curso'";
+      $resCurso = mysql_query($queCurso, $conexion) or die(mysql_error());
+      //$totCurso = mysql_num_rows($resEmp);
+      $sql_listado="select a.cedula, a.nombre_apellido,a.tipo, a.dependencia from empleados a, cursos_empleados b  where a.cedula=b.cedula and b.codigo_curso='$cod_curso'";	
+      $resListado = mysql_query($sql_listado, $conexion) or die(mysql_error());
+      $totListado = mysql_num_rows($resListado);
+      // creando arreglos para datos, titulos y opciones
+      while($datatmp = mysql_fetch_array($resCurso))
+      {
+          $curso= $datatmp['curso'];
+          $fe_inicio= $datatmp['fe_inicio'];
+          $fe_fin= $datatmp['fe_fin'];
+          $duracion= $datatmp['duracion'];
+          $dictado= $datatmp['dictado'];
+          $correo= $datatmp['correo'];
+          $dias= $datatmp['dias'];
+          $ds_curso= $datatmp['ds_curso'];
+      }
+      $iyy = 0;
+      while($datatmp = mysql_fetch_assoc($resListado)) 
+      {
+          $iyy = $iyy+1;
+          $data[] = array_merge($datatmp , array('num'=>$iyy));
+      }
+// matriz con los nombres de la tabla , aqui cada campo agregado a la matriz se hace corresponder a un
+//nombre q aparecera como titulo de la fila         
+      $cedula_acen="Cédula";
+      $cedula_acen = mb_convert_encoding($cedula_acen,"ISO-8859-1","UTF-8");
+	$titles = array(
+               'cedula'=>'<b>'.$cedula_acen.'</b>',
+               'nombre_apellido'=>'<b>Nombre y Apellido</b>',
+               'tipo'=>'<b>Persona</b>',
+               'dependencia'=>'<b>Dependencia</b>',
+             );
+                      
+      //matriz indica los colores de las celdas, la orientación y el ancho de la tabla.      
+      $options = array(
+                'shadeCol'=>array(0.9,0.9,0.9),
+                'xOrientation'=>'center',
+                'width'=>500
+           );
+      
+      $duracion_acen="Duración";
+      $duracion_acen = mb_convert_encoding($duracion_acen, "ISO-8859-1", "UTF-8");
+      $correo_acen="Correo Electrónico";
+      $correo_acen= mb_convert_encoding($correo_acen, "ISO-8859-1", "UTF-8");
+      $dias_acen="Días";
+      $dias_acen= mb_convert_encoding($dias_acen, "ISO-8859-1", "UTF-8");
+      $ds_acen="Descripción";
+      $ds_acen= mb_convert_encoding($ds_acen, "ISO-8859-1", "UTF-8");
+      $txtcurso= "Curso: " . $curso;
+      $txtfe_inicio = "Fecha de Inicio: " . $fe_inicio;
+      $txtfe_fin = "Fecha Fin: " . $fe_fin;
+      $txtduracion = "$duracion_acen: " . $duracion;
+      $txtdictado= "Dictado por: " . $dictado;
+      $txtcorreo= "$correo_acen: " . $correo;
+      $txtdias= "$dias_acen: " . $dias;
+      $txtds_curso= "$ds_acen: " . $ds_curso;		
+      // IMPRIMIENDO LOS RESULTADOS
+      $txttit = "<b>Listado de Postulados</b>\n";     // se crea titulo y subtitulo de texto
+      $txtblanco = "<b>  </b>\n";
+      $pdf->ezText($txttit, 14, array('justification'=>'center'));
+      $pdf->ezText($txtblanco, 12);
+      $pdf->ezText($txtcurso, 12, array('justification'=>'left'));
+      $pdf->ezText($txtfe_inicio, 12, array('justification'=>'left'));
+      $pdf->ezText($txtfe_fin , 12, array('justification'=>'left'));
+      $pdf->ezText($txtduracion.' hrs.', 12, array('justification'=>'left'));
+      $pdf->ezText($txtdias, 12, array('justification'=>'left'));
+      $pdf->ezText($txtdictado, 12, array('justification'=>'left'));
+      $pdf->ezText($txtcorreo, 12, array('justification'=>'left'));
+      $pdf->ezText($txtds_curso, 12, array('justification'=>'left'));
+      $pdf->ezText($txtblanco, 12);
+      $pdf->ezText($txtblanco, 12);
+      $pdf->ezTable($data, $titles, '', $options);  // los resultados de la consulta va aqui
+      $pdf->ezText("\n\n\n", 10);
+      // IMPRIMIENDO fecha y hora 
+      $pdf->ezText("<b>Fecha:</b> ".date("d/m/Y"), 10);   // Fecha y hora en que se genera documento
+      $pdf->ezText("<b>Hora:</b> ".date("H:i:s")."\n\n", 10);
+      $pdf->ezStream();
+
+
+?>

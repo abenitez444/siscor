@@ -1,0 +1,6 @@
+label_inf
+{
+    display:block;
+  	 font:bold 65% Verdana, sans-serif;
+    color:#cc2e2b;  
+}

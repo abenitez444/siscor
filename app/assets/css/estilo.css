@@ -1,0 +1,374 @@
+/*Carateristicas generales*/
+body
+{
+	background: #e6e6e6;
+	font:bold 70% Verdana, sans-serif;
+
+}
+.reporte
+{
+	background: #ffffff;
+}
+a 
+{ 	color: #990000;
+	text-decoration: none;
+}
+a:link 
+{
+	color: #990000;
+	text-decoration: none;
+}
+a:visited
+{
+	text-decoration: none;
+	color: #990000;
+}
+a:hover
+{
+	text-decoration: none;
+	color: #990000;
+}
+a:active
+{
+	text-decoration: none;
+	color: #990000;
+}
+.cuerpo_reporte
+{	
+	height:50%;
+	margin:/*arriba*/ 5em /*der*/0em /* abajo*/5em /*izq*/.5em;
+	padding-bottom:2px;
+}
+#cuerpo
+{	position: static;
+	width:865px;
+	height:100%;
+	margin: 0 auto;
+}
+#cuerpo #sesion
+{	
+	width:865px;
+	margin-top: 2px;
+	padding-top:2px;
+	padding-bottom:2px;
+	-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;	background: #fff;
+	text-align:right;
+	font:bold 90% Verdana, sans-serif;
+}
+#cuerpo #banner
+{	
+	position: static;
+	width:865px;
+	height:62px;
+	-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+	background: url('../img/cintillo.png') no-repeat;	
+}
+#cuerpo #contenedor
+{	
+	background: #fff;
+	position: realtive;
+	-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+	margin-top: 1px;
+	padding-top:20px;
+	padding-bottom:20px;
+	float:left;
+}
+#cuerpo #contenedor #izquierda
+{	
+	position: realtive;
+	width:160px;
+	float:left;
+	margin:/*arriba*/ 1em /*der*/0em /* abajo*/0em /*izq*/.5em;
+	font-size:1.2em;
+	text-align:left;
+}
+#cuerpo #contenedor #central
+{	
+	position: realtive;
+	width: 698px;
+	float: right;	
+	text-align:center;	
+	/*border: 1px solid #B00000;*/
+}
+#cuerpo #cintillo
+{	
+	position: static;
+	border-style: none;
+	border-color: #111;
+	border-bottom-color:#ec2e38;
+	border-bottom-width: 5px;
+	border-bottom-style: solid;
+	clear:left;
+}
+#cuerpo #superior 
+{	
+	position: static;
+	width:865px;
+	height:142px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-ms-border-radius: 4px;
+	background: url('../img/principal.jpg') no-repeat;
+}
+#cuerpo #pie
+{	
+	background: #fff;
+	position:static;
+	-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+	height: 20%;
+	background: url('../img/banner_pie.jpg') no-repeat;
+	clear:left;	
+}
+fieldset
+{ 
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-ms-border-radius: 4px;
+	width: 550px;
+	display: block;
+	border: 1px solid #B00000;
+}
+.fieldsetTransparente
+{ 	
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-ms-border-radius: 4px;
+	width: 600px;
+	display: block;
+	border: 0px 
+}
+form
+{
+	/*border: 1px solid #F8E0E0;*/
+       	margin: 0;
+       	padding: 5px;
+       	width: 550px;  
+}
+.form2
+{
+	/*border: 1px solid #F8E0E0;*/
+       	margin: 0;
+       	padding: 5px;
+       	width: 750px;  
+}
+.fieldsetInicio
+{ 	
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-ms-border-radius: 4px;
+	width: 430px;
+	display: block;
+	border: 1px solid #B00000;
+	margin: 0 auto; /*centrar*/
+}
+input
+{
+   	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-ms-border-radius: 6px;
+  	font-size:10px;
+	margin: auto; /*centrar*/
+	
+}
+textarea
+{
+   	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-ms-border-radius: 6px;
+  	font-size:10px;
+	margin: auto; /*centrar*/
+}
+label,input
+{
+  	padding:4px;
+	margin: auto; /*centrar*/
+	
+}
+label
+{
+   	display:block;
+  	font:bold 10px Verdana, sans-serif;
+   	color:#6d6464;  
+}
+.label_inf
+{
+   	display:block;
+  	font:bold 9px  Verdana, sans-serif;
+    color:#cc2e2b;  
+    text-align:left;
+}
+.label_corr
+{
+   	display:block;
+  	font:bold 15px  Verdana, sans-serif;
+    color:#6d6464;  
+    text-align:left;
+}
+SELECT{
+
+	font-size: 11px;
+	
+}
+option
+{
+	font-size: 11px;
+}
+.boton
+{
+	margin-top:5px;
+	margin-bottom:5px;
+	text-decoration:none;
+	background: #e6e6e6;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-ms-border-radius: 4px;
+	font:bold 75% Verdana, sans-serif;
+   	color:#6d6464;
+}
+.tabla
+{
+  	font-size:12px;
+  	color:#6d6464;
+  	text-align: left;
+}
+.tabla_reporte
+{
+  	font-size:12px;
+  	color:#6d6464;
+	background: #FFFFFF;
+  	text-align: left;
+    width: 80%;  
+}
+#tabla_msj
+{
+	background:#F8E0E0;  	
+  	border-right-width: 2px;
+  	border-bottom-width: 2px;
+  	border-right-color: #558FA6;
+  	border-bottom-color: #558FA6;
+	width:auto;
+	font-family: Verdana, sans-serif;
+	font-size:12px;
+  	color:#000;
+	text-align: center;
+}
+.titulo
+{ 	font-size: 11px;
+ 	color:#990000;
+  	font-weight:bold;
+  	text-transform:uppercase;
+}
+.tabla th {
+  	padding: 3px;
+  	font-size: 12px;
+  	background-image: url('../img/fondo_th.jpg');
+  	background-repeat: repeat-x;
+  	color: #FFFFFF;
+  	border-right-width: 1px;
+  	border-bottom-width: 1px;
+  	border-right-color: #558FA6;
+  	border-bottom-color: #558FA6;
+   	text-transform: uppercase;
+}
+.tabla .modo1  {
+  	font-size: 120%;
+ 	background:#e6e6e6;
+  	background-repeat: repeat-x;
+  	color: #34484E;
+  	font-family: Verdana, sans-serif;
+}
+.font1 
+	{
+	font-weight:bold;
+	font-size: 11px;
+	color: #34484E;
+	font-family: Verdana, sans-serif;
+}
+.font2 
+	{
+	font-size: 11px;
+	color: #34484E;
+	font-family: Verdana, sans-serif;
+}
+.fontTitiloReporte 
+	{
+	font-size: 14px;
+	color: #34484E;
+	font-family: Verdana, sans-serif;
+}	
+.font3 
+	{
+	color:#cc2e2b;
+}
+.notas 
+	{
+	font-size:11px;
+	color: #34484E;
+	font-family: Verdana, sans-serif;
+	font-weight:normal;
+}
+.font4
+{
+   	display:block;
+  	font:bold 70% Verdana, sans-serif;
+   	color:#6d6464;  
+}
+.tabla .modo1 tr
+ {
+  	padding: 3px;
+  	border-right-width: 1px;
+  	border-bottom-width: 1px;
+  	border-right-style: solid;
+  	border-bottom-style: solid;
+  	border-right-color: #A4C4D0;
+  	border-bottom-color: #A4C4D0;
+  	text-align:right;
+
+} 
+.tabla .modo2  {
+  	font-size: 11px;
+  	background-image: url('../img/fondo_tr02.jpg');
+  	background-repeat: repeat-x;
+  	color: #34484E;
+}
+
+.tabla .modo2 tr 
+{
+  	padding: 3px;
+  	border-right-width: 1px;
+  	border-bottom-width: 1px;
+  	border-right-style: solid;
+  	border-bottom-style: solid;
+  	border-right-color: #A4C4D0;
+  	border-bottom-color: #A4C4D0;
+  	text-align:right;
+} 
+
+.input2
+{
+   	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-ms-border-radius: 6px;
+  	font-size:10px;
+	margin: auto; /*centrar*/
+	border:0px solid #fee;
+}
+/* ESTO ES PARA CREAR EL SCROLL HORIZONTAL DE LA TABLA */
+#cuerpo #contenedor #contiene_tablas 
+{
+	width: 660px; 
+	height: 200px; 
+	overflow: auto;
+	
+}
+.page { 
+background:#990000;
+}  

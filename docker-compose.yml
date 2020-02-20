@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+      image: jasonan/php5.6-apache:latest
+      ports:
+        - 8080:80
+
+      volumes:
+        - ./app:/app
+        - ./vhost.conf:/etc/apache2/sites-available/000-default.conf
+       # - ./php/02_pdo_pgsql.ini:/etc/php7/conf.d/02_pdo_pgsql.ini
+
+      links:
+        - postgresql:postgresql
+
+  postgresql:
+      image: postgres:latest
+
+
+      environment:
+         - POSTGRES_DATABASE=siscor
+         - POSTGRES_USER=vicepresidencia
+         - POSTGRES_PASSWORD=4321x2
+      volumes:
+        - ./sql:/sql
+        - /postgres-data:/var/lib/postgresql/data
+   

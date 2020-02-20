@@ -1,0 +1,46 @@
+<?php
+      require_once('class.ezpdf.php');
+      $pdf =& new Cezpdf('a4');          // para el tipo de hoja  en este caso Carta
+      $pdf->selectFont('../fonts/courier.afm');   // para el tipo de fuente a utilizar
+      $pdf->ezSetCmMargins(1,1,1.5,1.5);  // para los margenes de la hoja
+
+      $conexion = mysql_connect("localhost", "root", "123456");
+      mysql_select_db("instituto", $conexion);
+      $queEmp = "SELECT Ced, Nombre FROM estudiante";
+      $resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
+      $totEmp = mysql_num_rows($resEmp);
+      
+      // creando arreglos para datos, titulos y opciones
+      $ixx = 0;
+      while($datatmp = mysql_fetch_assoc($resEmp)) 
+      {
+          $ixx = $ixx+1;
+          $data[] = array_merge($datatmp, array('num'=>$ixx));
+      }
+      // matriz con los nombres de la tabla , aqui cada campo agregado a la matriz se hace corresponder a un
+      //nombre q aparecera como titulo de la fila         
+      $titles = array(
+                      'num'=>'<b>Num</b>',
+                      'nombre'=>'<b>Empresa</b>',
+                      'direccion'=>'<b>Direccion</b>',
+                      'telefono'=>'<b>Telefono</b>'
+                      );
+		//matriz indica los colores de las celdas, la orientación y el ancho de la tabla.      
+      $options = array(
+                      'shadeCol'=>array(0.9,0.9,0.9),
+                      'xOrientation'=>'center',
+                      'width'=>500
+                      );
+
+		// IMPRIMIENDO LOS RESULTADOS
+		$txttit = "<b>BLOG.UNIJIMPE.NET</b>\n";     // se crea titulo y subtitulo de texto
+      $txttit.= "Ejemplo de PDF con PHP y MYSQL \n";
+      $pdf->ezText($txttit, 12);
+      $pdf->ezTable($data, $titles, '', $options);  // los resultados de la consulta va aqui
+      $pdf->ezText("\n\n\n", 10);
+      $pdf->ezText("<b>Fecha:</b> ".date("d/m/Y"), 10);   // Fecha y hora en que se genera documento
+      $pdf->ezText("<b>Hora:</b> ".date("H:i:s")."\n\n", 10);
+      $pdf->ezStream();
+
+
+?>

@@ -1,0 +1,36 @@
+version: '3'
+services:
+  
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+        - "5433:5432"
+
+    environment:
+        POSTGRES_USER: vicepresidencia
+        POSTGRES_PASSWORD: 4321x2
+        POSTGRES_DATABASE: siscor
+    volumes:
+        - ./sql:/sql
+        - postgres-data:/var/lib/postgresql/data
+
+
+  web:
+    image: jasonan/php5.6-apache:latest
+    ports:
+      - "8080:8081"
+    volumes:
+      - ./app:/app
+     # - ./php/02_pdo_pgsql.ini:/etc/php7/conf.d/02_pdo_pgsql.ini
+      - ./vhost.conf:/etc/apache2/sites-available/000-default.conf
+   
+    depends_on:
+      - db  
+        
+volumes:
+  postgres-data:
+ 
+    driver: local
+
+docker-composer.html-dev
