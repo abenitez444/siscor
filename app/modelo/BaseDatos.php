@@ -35,15 +35,15 @@ class BaseDatos {
 	}*/
 	public function __construct() {
 		$this->SetIdBaseDatos ( "" );
-		$this->SetServidor ( "localhost" ); //Producci�n: metcam41.pdvsa.com  Desarrollo: metltq82bdd.met.pdvsa.com
+		$this->SetServidor ( "172.22.0.2" ); //Producci�n: metcam41.pdvsa.com  Desarrollo: metltq82bdd.met.pdvsa.com
 		
 		
-		if ($this->GetServidor () == "localhost") { //Servidor de Produccion
-			$this->SetUsuario ( "postgres" );
-			$this->SetClave ( "123456" );
+		if ($this->GetServidor () == "172.22.0.2") { //Servidor de Produccion
+			$this->SetUsuario ( "vicepresidencia" );
+			$this->SetClave ( "4321x2" );
 		} else { //Servidor de Desarrollo
-			$this->SetUsuario ( "postgres" );
-			$this->SetClave ( "123456" );
+			$this->SetUsuario ( "vicepresidencia" );
+			$this->SetClave ( "4321x2" );
 		}
 		
 		$this->SetNomBaseDatos ( "siscor" );
@@ -121,7 +121,8 @@ class BaseDatos {
 		}
 	/***************************************************************************************************************************************************/	
 		$this->GetDB ()->debug=false; //True para ver las sentencias (SQL) del código mientras se ejecutan y FAlSE no las muestra
-		$this->GetDB ()->port = 5432;//postgres5432  mysql 3366
+		$this->GetDB ()->port = 5433;//postgres5432  mysql 3366
+		//$this->GetDB ()->port = 5432;//postgres5432  mysql 3366
 		return $this->GetDB ();
 	}
 	

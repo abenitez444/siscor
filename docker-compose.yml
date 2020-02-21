@@ -1,27 +1,35 @@
 version: '3'
 services:
   web:
-      image: jasonan/php5.6-apache:latest
+      container_name: web-container
+      image: yousan/php5.6-apache:latest
+      #image: yousan/php5.6-apache:latest
       ports:
         - 8080:80
 
       volumes:
         - ./app:/app
         - ./vhost.conf:/etc/apache2/sites-available/000-default.conf
-       # - ./php/02_pdo_pgsql.ini:/etc/php7/conf.d/02_pdo_pgsql.ini
+        - ./php/02_pdo_pgsql.ini:/etc/php/7.0/cli/conf.d/02_pdo_pgsql.ini
+        - ./php/php.ini:/etc/php/7.0/cli/php.ini
+        #- ./php/02_pdo_pgsql.ini:/etc/php7/conf.d/02_pdo_pgsql.ini
 
       links:
         - postgresql:postgresql
+      depends_on:
+        - postgresql
 
   postgresql:
-      image: postgres:latest
-
+      container_name: db-container
+      image: devchef/postgres-9.5
+      ports:
+      - "5433:5432"
 
       environment:
-         - POSTGRES_DATABASE=siscor
-         - POSTGRES_USER=vicepresidencia
+         - POSTGRES_DATABASE=postgres
+         - POSTGRES_USER=postgres
          - POSTGRES_PASSWORD=4321x2
       volumes:
         - ./sql:/sql
         - /postgres-data:/var/lib/postgresql/data
-   
+        - ./postgres/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
