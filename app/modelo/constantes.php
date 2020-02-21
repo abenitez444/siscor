@@ -7,8 +7,8 @@
     define("PUERTO","5432");
     */
     define("BD","siscor");
-    define("SERVIDOR","172.22.0.2");
-    define("USUARIO","vicepresidencia");
+    define("SERVIDOR","db-container");
+    define("USUARIO","postgres");
     define("CLAVE","4321x2");
-    define("PUERTO","5433");
+    define("PUERTO","5432");
 ?>

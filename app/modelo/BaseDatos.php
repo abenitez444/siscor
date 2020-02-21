@@ -35,14 +35,14 @@ class BaseDatos {
 	}*/
 	public function __construct() {
 		$this->SetIdBaseDatos ( "" );
-		$this->SetServidor ( "172.22.0.2" ); //Producci�n: metcam41.pdvsa.com  Desarrollo: metltq82bdd.met.pdvsa.com
+		$this->SetServidor ( "db-container" ); //Producci�n: metcam41.pdvsa.com  Desarrollo: metltq82bdd.met.pdvsa.com
 		
 		
-		if ($this->GetServidor () == "172.22.0.2") { //Servidor de Produccion
-			$this->SetUsuario ( "vicepresidencia" );
+		if ($this->GetServidor () == "db-container") { //Servidor de Produccion
+			$this->SetUsuario ( "postgres" );
 			$this->SetClave ( "4321x2" );
 		} else { //Servidor de Desarrollo
-			$this->SetUsuario ( "vicepresidencia" );
+			$this->SetUsuario ( "postgres" );
 			$this->SetClave ( "4321x2" );
 		}
 		
