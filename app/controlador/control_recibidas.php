@@ -8,6 +8,7 @@ include_once("../modelo/class_recibidas.php");
 include_once("../modelo/class_respuesta_recibidas.php");
 include_once("../modelo/class_respuesta_remisiones.php");
 include_once("../modelo/class_modulosxusuarios.php");
+date_default_timezone_set('UTC');
 
 $Recibida_user = isset($_GET['User_dire'])? $_GET['User_dire'] : "respuesta";
 

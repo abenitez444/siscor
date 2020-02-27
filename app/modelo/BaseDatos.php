@@ -35,10 +35,10 @@ class BaseDatos {
 	}*/
 	public function __construct() {
 		$this->SetIdBaseDatos ( "" );
-		$this->SetServidor ( "db-container" ); //Producci�n: metcam41.pdvsa.com  Desarrollo: metltq82bdd.met.pdvsa.com
+		$this->SetServidor ( "db-siscor" ); //Producci�n: metcam41.pdvsa.com  Desarrollo: metltq82bdd.met.pdvsa.com
 		
 		
-		if ($this->GetServidor () == "db-container") { //Servidor de Produccion
+		if ($this->GetServidor () == "db-siscor") { //Servidor de Produccion
 			$this->SetUsuario ( "postgres" );
 			$this->SetClave ( "4321x2" );
 		} else { //Servidor de Desarrollo

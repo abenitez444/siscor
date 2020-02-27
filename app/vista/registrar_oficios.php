@@ -124,6 +124,7 @@ $MiAjax->printJavascript();
 					}
 					else
 					{
+					date_default_timezone_set('UTC');
 					$fecha_envio = date("d-m-Y"); 	
 					}
 					?>

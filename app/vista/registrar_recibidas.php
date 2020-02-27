@@ -127,7 +127,8 @@ $MiAjax->printJavascript();
 					}
 					else
 					{
-					$fecha_oficio = date("d-m-Y"); 	
+				     date_default_timezone_set('UTC');
+					 $fecha_oficio = date("d-m-Y"); 	
 					}
 					?>    
 				   	<td><?php

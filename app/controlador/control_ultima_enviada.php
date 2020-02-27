@@ -2,6 +2,7 @@
 session_start();
 include('../controlador/script.php');
 include_once("../modelo/class_oficios.php"); 
+date_default_timezone_set('UTC');
 
 if ($_SESSION['perfil']==1)
 {
