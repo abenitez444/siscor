@@ -15,7 +15,7 @@ services:
       
       volumes:
        - ./sql:/sql
-       - postgres-data:/usr/lib/postgresql/data
+       - ./postgres-data:/usr/lib/postgresql/data
 
    web:
       container_name: web-siscor
